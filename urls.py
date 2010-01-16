@@ -22,4 +22,6 @@ urlpatterns = patterns('',
     #(r'^(?P<template>\w+)/$', static_page),
 
     (r'^(?P<template>\w+)/$', direct_to_template),
+    (r'^static/(.*)$', 'django.views.static.serve',
+        {'document_root': 'static/'}),
 )
