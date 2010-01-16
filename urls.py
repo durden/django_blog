@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.views.generic.simple import direct_to_template
 
 from blog.views import *
 
@@ -14,6 +15,12 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # (r'^admin/(.*)', admin.site.root),
 
+    # Homepage is base template with nothing else (i.e. index page)
     (r'^$', static_page, {'template': 'base'}),
-    (r'^(?P&lt;template&gt;\w+)/$', static_page),
+
+    # Grab any word, and pass it as 'template' to static_page view
+    # Not using b/c it appends .html for templates
+    #(r'^(?P<template>\w+)/$', static_page),
+
+    (r'^(?P<template>\w+)/$', direct_to_template),
 )
