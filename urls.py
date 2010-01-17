@@ -21,9 +21,10 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
     # Homepage is base template with nothing else (i.e. index page)
-    (r'^$', list_detail.object_list,
-        {'queryset': Post.objects.all(),
-                        'template_object_name': 'post',}, name="blog_home"),
+    (r'^$', static_page, {'template': 'base'}),
+
+    # Blogs
+    (r'^blog/$', include('blog_template.blog.urls')),
 
     # Grab any word, and pass it as 'template' to static_page view
     # Not using b/c it appends .html for templates
