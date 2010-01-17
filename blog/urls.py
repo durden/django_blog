@@ -3,7 +3,6 @@ from django.conf.urls.defaults import *
 
 # Views
 from django.views.generic import list_detail
-from blog_template.views import *
 
 # Models
 from blog_template.blog.models import Post
