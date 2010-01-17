@@ -1,11 +1,17 @@
+# Urls
 from django.conf.urls.defaults import *
+
+# Views
 from django.views.generic.simple import direct_to_template
+from django.views.generic import list_detail
+from blog_template.views import *
+
+# Models
+from blog_template.blog.models import Post
 
 # Admin
 from django.contrib import admin
 admin.autodiscover()
-
-from blog_template.views import *
 
 urlpatterns = patterns('',
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
@@ -15,7 +21,9 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
     # Homepage is base template with nothing else (i.e. index page)
-    (r'^$', static_page, {'template': 'base'}),
+    (r'^$', list_detail.object_list,
+        {'queryset': Post.objects.all(),
+                        'template_object_name': 'post',}, name="blog_home"),
 
     # Grab any word, and pass it as 'template' to static_page view
     # Not using b/c it appends .html for templates
