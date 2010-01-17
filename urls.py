@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     # Not using b/c it appends .html for templates
     #(r'^(?P<template>\w+)/$', static_page),
 
-    (r'^(?P<template>\w+)/$', direct_to_template),
+    url(r'^(?P<template>\w+)/$', direct_to_template, name='static_page'),
     (r'^static/(.*)$', 'django.views.static.serve',
         {'document_root': 'static/'}),
 )
