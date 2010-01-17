@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
     # Homepage is base template with nothing else (i.e. index page)
-    (r'^$', static_page, {'template': 'base'}),
+    (r'^$', include('blog_template.blog.urls')),
 
     # Blogs
     (r'^blog/$', include('blog_template.blog.urls')),
