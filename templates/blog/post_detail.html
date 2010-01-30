@@ -2,6 +2,8 @@
 {% load comments %}
 
 {% block content %}
+    {% get_comment_count for post as comment_count %}
+
 	{% include "blog/post.html" %}
     <div class="post">
         <h2 class="title">Comments</h2>

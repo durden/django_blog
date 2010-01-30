@@ -3,7 +3,7 @@
         <a href="{% url single_post object_id=post.id %}">{{ post.title }}</a>
     </h2>
  
-    Posted on {{ post.published|date:"F j, Y" }}  Comments (0)
+    Posted on {{ post.published|date:"F j, Y" }}  Comments ({{comment_count}})
  
     <div class="entry">
             {{ post.body|safe }}
