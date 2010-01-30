@@ -355,3 +355,11 @@ hr {
 	text-decoration: none;
 	color: #939393;
 }
+
+#id_honeypot, label[for=id_honeypot] {
+	display: none !important;
+}
+ 
+#comment_form label, #comment_form input[type=text], #comment_form textarea {
+	display: block;
+}
