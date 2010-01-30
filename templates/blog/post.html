@@ -1,11 +1,14 @@
+{% load comments %}
+{% get_comment_count for post as comment_count %}
+
 <div class="post">
     <h2 class="title">
-        <a href="{% url single_post object_id=post.id %}">{{ post.title }}</a>
+        <a href="{% url single_post slug=post.slug %}">{{ post.title }}</a>
     </h2>
  
     Posted on {{ post.published|date:"F j, Y" }}  Comments ({{comment_count}})
  
     <div class="entry">
-            {{ post.body|safe }}
+        {{ post.body|safe }}
     </div>
 </div>

@@ -2,8 +2,6 @@
 {% load comments %}
 
 {% block content %}
-    {% get_comment_count for post as comment_count %}
-
 	{% include "blog/post.html" %}
     <div class="post">
         <h2 class="title">Comments</h2>
@@ -22,7 +20,7 @@
 
     <form id="comment_form" action="{% comment_form_target %}" method="post">
         {{ comment_form }}
-        <input name="next" type="hidden" value="{% url single_post object_id=post.id %}" />
+        <input name="next" type="hidden" value="{% url single_post slug=post.slug %}" />
         <input class="submit-post" name="post" type="submit" value="Submit" />
     </form>
 
