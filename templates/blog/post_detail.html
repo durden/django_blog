@@ -15,6 +15,13 @@
             </div>
 		{% endfor %}
     </div>
-       {% render_comment_form for post %}
+
+    {% get_comment_form for post as comment_form %}
+
+    <form id="comment_form" action="{% comment_form_target %}" method="post">
+        {{ comment_form }}
+        <input name="next" type="hidden" value="{% url single_post object_id=post.id %}" />
+        <input class="submit-post" name="post" type="submit" value="Submit" />
+    </form>
 
 {% endblock %}
