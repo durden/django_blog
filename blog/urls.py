@@ -3,10 +3,10 @@ from django.conf.urls.defaults import *
 
 # Views
 from django.views.generic import list_detail
-from blog_template.blog.views import *
+from blog.views import *
 
 # Models
-from blog_template.blog.models import Post
+from blog.models import Post
 
 urlpatterns = patterns('',
     url(r'post/(?P<slug>[a-z-]+)/$', blog_generic_view,
