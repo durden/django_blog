@@ -1,11 +1,18 @@
-<div class="post">
-    <h2 class="title">
-        <a href="{% url single_post object_id=post.id %}">{{ post.title }}</a>
-    </h2>
- 
-    Posted on {{ post.published|date:"F j, Y" }}  Comments (0)
- 
-    <div class="entry">
-            {{ post.body|safe }}
+{% extends "base.html" %}
+{% load comments %}
+
+{% block content %}
+	{% include "blog/post.html" %}
+    <div class="post">
+        <h2 class="title">Comments</h2>
+        {% for comment in comment_list %}
+            Posted by {{ comment.user_name }} on
+                {{ comment.submit_date|date:"F j, Y" }}
+            <div class="entry">
+                {{ comment.comment }}
+            </div>
+		{% endfor %}
     </div>
-</div>
+	{% render_comment_form for post %}
+
+{% endblock %}

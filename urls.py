@@ -24,4 +24,6 @@ urlpatterns = patterns('',
     # Grab any word, and pass it as 'template' to static_page view
     # Not using b/c it appends .html for templates
     url(r'^(?P<template>\w+)/$', static_page, name='static_page'),
+
+    (r'^comments/', include('django.contrib.comments.urls')),
 )
