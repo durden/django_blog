@@ -19,6 +19,10 @@ urlpatterns = patterns('',
             {'redirect_to': date_based.archive_month, 'date_field': 'published',
                 'template_name': 'blog/post_list.html',}),
 
+    # Posts by category
+    url(r'^category/(\d+)$', blog_posts_by_category,
+            name='blog_posts_by_category'),
+
     # Home page (post list)
     url(r'^$', blog_generic_view, {'redirect_to': list_detail.object_list},
         name="blog_home"),
