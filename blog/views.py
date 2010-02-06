@@ -2,14 +2,18 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.views.generic import list_detail, date_based
 from models import Post, Category
 
-def blog_generic_view(request, redirect_to, **view_args):
+def blog_generic_view(request, redirect_to, paginate=True, **view_args):
     """
     Generic view to append default args before passing to primary view
 
     request     - Request
     redirect_to - View function to process final request
+    paginate    - Paginate query set or not
     view_args   - Dictionary of args to pass to final view
     """
+
+    if paginate:
+        view_args['paginate_by'] = 5
 
     # Allow caller to pass queryset or use all post objects
     view_args['queryset'] = view_args.get('queryset', Post.objects.all())

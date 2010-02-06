@@ -11,7 +11,8 @@ from blog.models import Post
 urlpatterns = patterns('',
     # Post detail
     url(r'post/(?P<slug>[a-z-]+)/$', blog_generic_view,
-            {'redirect_to': list_detail.object_detail, 'slug_field' : 'slug',},
+            {'redirect_to': list_detail.object_detail, 'slug_field' : 'slug',
+             'paginate': False},
         name='single_post'),
 
     # Archives
