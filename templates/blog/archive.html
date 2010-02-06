@@ -1,0 +1,8 @@
+<h2>Archive</h2>
+<ul>
+    {% for archive in archives %}
+    <li>
+        <a href="{% url blog_posts_by_month month=archive|date:"b",year=archive|date:"Y" %}">{{ archive|date:"F Y" }}</a>
+    </li>
+    {% endfor %}
+</ul>
