@@ -8,6 +8,11 @@ from blog.views import *
 # Models
 from blog.models import Post
 
+# Feeds
+from blog.feeds import BlogLatestEntries
+
+feeds = {'latest': BlogLatestEntries,}
+
 urlpatterns = patterns('',
     # Post detail
     url(r'post/(?P<slug>[a-z-]+)/$', blog_generic_view,
@@ -31,4 +36,8 @@ urlpatterns = patterns('',
 
     # Search
     url(r'^search/$', blog_post_search, name="blog_post_search"),
+
+    # RSS Feeds
+    url(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
+        {'feed_dict': feeds}, name='feeds'),
 )
