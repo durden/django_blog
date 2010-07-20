@@ -1,4 +1,5 @@
 {% load comments %}
+{% load syntax_color %}
 {% get_comment_count for post as comment_count %}
 
 <div class="post">
@@ -9,6 +10,6 @@
     Posted on {{ post.published|date:"F j, Y" }}  Comments ({{comment_count}})
  
     <div class="entry">
-        {{ post.body|safe }}
+        {{ post.body|colorize_table:"python"}}
     </div>
 </div>
